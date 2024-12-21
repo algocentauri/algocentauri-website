@@ -1,0 +1,165 @@
+:root {
+    --oxygen-blue: #00BFFF;      
+    --sulfur-orange: #FFA500;    
+    --hydrogen-green: #32CD32;   
+    --deep-space-purple: #4B0082;
+    --starry-white: #FFFFFF;     
+    --nebula-black: #000000;     
+}
+
+body {
+    background-color: #f7fafc; 
+	margin: 0;
+	padding: 0;
+}
+
+.hero {
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+        url('./assets/background.jpg'); 
+    background-size: cover;
+    background-position: center center;
+	color: white; 
+    padding: 80px 0;
+}
+
+.container {
+	max-width: 80%;
+	margin: 0 auto;
+	padding: 15px;
+}
+
+.portfolio-items {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+	gap: 20px; 
+    padding: 20px;
+}
+
+.portfolio-item {
+	background-color: #ffffff; 
+    border: 2px solid var(--oxygen-blue); 
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s; 
+}
+
+.portfolio-item img {
+    width: 100%; 
+    height: auto; 
+}
+
+.portfolio-item h3 {
+    color: var(--deep-space-purple); 
+    font-size: 1.5em; 
+    margin: 10px; 
+}
+
+.portfolio-item p {
+    color: #333333; 
+    padding: 0 10px 10px; 
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05); 
+}
+
+.text-white {
+    color: white;
+}
+
+.py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.header-title {
+    font-size: 2.25rem; /* text-4xl */
+}
+
+.header-subtitle {
+    font-size: 1.25rem; /* text-xl */
+}
+
+.button {
+    background-color: var(--oxygen-blue);
+    color: #fff; 
+    padding: 1rem 1.5rem;
+    display: inline-block;
+	text-decoration: none;
+	border-radius: 0.25rem;
+	text-transform: uppercase;
+}
+
+.nav-bg {
+    background-color: var(--nebula-black); 
+    color: var(--starry-white); 
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+	list-style-type: none;
+}
+
+.nav-link {
+    color: white;
+    padding: 1rem; 
+	text-decoration: none;
+	text-transform: uppercase;
+
+}
+
+.nav-link:hover {
+    color: #ecc94b; /* hover:text-yellow-400 */
+}
+
+.section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.bg-light-gray {
+    background-color: #edf2f7; /* bg-gray-200 */
+}
+
+.section-title {
+    font-size: 1.875rem; /* text-3xl */
+}
+
+.service-list {
+    list-style-type: disc;
+}
+
+.portfolio-items {
+    margin-top: 1rem; /* mt-4 */
+}
+
+.portfolio-item {
+    background-color: white;
+    padding: 1rem; /* p-4 */
+    border-radius: 0.375rem; /* rounded */
+}
+
+.form-container {
+    background-color: white;
+    padding: 1.5rem; /* p-6 */
+    border-radius: 0.375rem; /* rounded */
+}
+
+input[type=text], input[type=email], textarea {
+    border: 1px solid #d1d5db; /* border-gray-300 */
+    padding: 0.5rem; /* p-2 */
+    width: 100%;
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.footer-bg {
+    background-color: #4a5568; /* bg-gray-800 */
+}
+

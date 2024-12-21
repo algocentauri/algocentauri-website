@@ -4,41 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algocentauri - Innovative Software Solutions</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
+<body class="body-bg">
 
-    <header class="bg-blue-600 text-white py-10 text-center">
-        <div class="container mx-auto">
-            <h1 class="text-4xl">Algocentauri</h1>
-            <p class="text-xl mt-4">Innovative Solutions from Hardware to Software</p>
-            <a href="#contact" class="bg-yellow-400 text-gray-800 py-2 px-4 rounded mt-4 inline-block">Get a Free Consultation</a>
+    <header class="hero">
+        <div class="container">
+            <h1 class="header-title">Algocentauri</h1>
+            <p class="header-subtitle">Innovative Solutions from Hardware to Software</p>
+            <a href="#contact" class="button">Get a Free Consultation</a>
         </div>
     </header>
 
-    <nav class="bg-gray-800">
-        <div class="container mx-auto flex justify-center">
-            <ul class="flex space-x-8 text-white py-4">
-                <li><a href="#about" class="hover:text-yellow-400">About Us</a></li>
-                <li><a href="#services" class="hover:text-yellow-400">Services</a></li>
-                <li><a href="#portfolio" class="hover:text-yellow-400">Portfolio</a></li>
-                <li><a href="#blog" class="hover:text-yellow-400">Blog</a></li>
-                <li><a href="#contact" class="hover:text-yellow-400">Contact</a></li>
+    <nav class="nav-bg">
+        <div class="container flex justify-center">
+            <ul class="nav-list">
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="about" class="py-20">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl mb-4">About Us</h2>
+    <section id="about" class="section-padding">
+        <div class="container text-center">
+            <h2 class="section-title">About Us</h2>
             <p>At Algocentauri, we specialize in full-stack development, integrating hardware solutions and economic principles to create innovative applications tailored to your needs.</p>
         </div>
     </section>
 
-    <section id="services" class="py-20 bg-gray-200">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl mb-4">Our Services</h2>
-            <ul class="list-disc list-inside space-y-2">
+    <section id="services" class="section-padding bg-light-gray">
+        <div class="container text-center">
+            <h2 class="section-title">Our Services</h2>
+            <ul class="service-list">
                 <li>Custom Hardware Development</li>
                 <li>Embedded Systems Design</li>
                 <li>Full-Stack Software Development</li>
@@ -49,43 +49,54 @@
         </div>
     </section>
 
-    <section id="portfolio" class="py-20">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl mb-4">Our Portfolio</h2>
+    <section id="portfolio" class="section-padding">
+        <div class="container text-center">
+            <h2 class="section-title">Our Portfolio</h2>
             <p>Explore some of our innovative projects:</p>
             <!-- Add project examples here -->
-            <div class="mt-4 space-y-4">
-                <div class="bg-white p-4 rounded shadow-md">
-                    <h3 class="text-xl">Project Title 1</h3>
-                    <p>Description of the project, technologies used, and its impact.</p>
+            <div class="portfolio-items">
+                <div class="portfolio-item">
+					<img src="assets/medialert.png" alt="MediAlert">
+                    <h3>MediAlert</h3>
+                    <p>A medication reminder app that lets you set reminders on medications you are taking and sends you reminders</p>
                 </div>
-                <div class="bg-white p-4 rounded shadow-md">
-                    <h3 class="text-xl">Project Title 2</h3>
-                    <p>Description of the project, technologies used, and its impact.</p>
+                <div class="portfolio-item">
+					<img src="assets/medialert.png" alt="Mama Laundry">
+                    <h3>Mama's Laundramat</h3>
+                    <p>A laundry as a service platform where you can find people to do your laundry</p>
+                </div>
+                <div class="portfolio-item">
+					<img src="project2.jpg" alt="Project 2">
+                    <h3>Echo Box</h3>
+                    <p>Comments As A service platform. Add comments to your blogs or websites</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>BitSumni</h3>
+                    <p>Bitsumni is a blockchain based fintech platform for currency exchange</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 bg-gray-200">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl mb-4">Contact Us</h2>
-            <form action="#" method="POST" class="bg-white p-6 rounded shadow-md mx-auto w-full max-w-lg">
-                <label for="name" class="block mb-2">Name:</label>
-                <input type="text" id="name" name="name" required class="border border-gray-300 p-2 w-full mb-4 rounded">
+    <section id="contact" class="section-padding bg-light-gray">
+        <div class="container text-center">
+            <h2 class="section-title">Contact Us</h2>
+            <form action="#" method="POST" class="form-container">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-                <label for="email" class="block mb-2">Email:</label>
-                <input type="email" id="email" name="email" required class="border border-gray-300 p-2 w-full mb-4 rounded">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
 
-                <label for="message" class="block mb-2">Message:</label>
-                <textarea id="message" name="message" rows="4" required class="border border-gray-300 p-2 w-full mb-4 rounded"></textarea>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
 
-                <input type="submit" value="Send Message" class="bg-blue-600 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 transition duration-300">
+                <input type="submit" value="Send Message" class="button">
             </form>
         </div>
     </section>
 
-    <footer class="bg-gray-800 text-white py-4 text-center">
+    <footer class="footer-bg text-white py-4 text-center">
         &copy; 2024 Algocentauri. All rights reserved.
     </footer>
 
