@@ -22,7 +22,6 @@
                 <li><a href="#about" class="nav-link">About Us</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#blog" class="nav-link">Blog</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -35,19 +34,35 @@
         </div>
     </section>
 
-    <section id="services" class="section-padding bg-light-gray">
-        <div class="container text-center">
-            <h2 class="section-title">Our Services</h2>
-            <ul class="service-list">
-                <li>Custom Hardware Development</li>
-                <li>Embedded Systems Design</li>
-                <li>Full-Stack Software Development</li>
-                <li>IoT Solutions & Integration</li>
-                <li>Consulting on Physics-Based Applications</li>
-                <li>Prototyping and Product Development</li>
-            </ul>
+	<section id="services" class="section-padding bg-light-gray">
+    <div class="container text-center">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-description">Explore our diverse range of services designed to cater to your unique needs, from innovative hardware solutions to comprehensive software development.</p>
+        <div class="service-container">
+            <div class="service-card">
+                <h3 class="service-title">🌐 Full-Stack Software Development</h3>
+                <p class="service-description">Comprehensive software solutions from front-end to back-end, mobile to web</p>
+            </div>
+            <div class="service-card">
+                <h3 class="service-title">🚀 Prototyping and Product Development</h3>
+                <p class="service-description">Rapid prototyping to bring your ideas to life quickly.</p>
+            </div>
+            <div class="service-card">
+                <h3 class="service-title">🔧 Custom Hardware Development</h3>
+                <p class="service-description">Tailored hardware solutions that meet your specific requirements.</p>
+            </div>
+            <div class="service-card">
+                <h3 class="service-title">💻 Embedded Systems Design</h3>
+                <p class="service-description">Expert design for embedded systems that optimize performance.</p>
+            </div>
+            <div class="service-card">
+                <h3 class="service-title">📡 IoT Solutions & Integration</h3>
+                <p class="service-description">Seamless integration of IoT devices for smarter solutions.</p>
+            </div>
         </div>
-    </section>
+    </div>
+	</section>
+
 
     <section id="portfolio" class="section-padding">
         <div class="container text-center">
@@ -71,34 +86,54 @@
                     <p>Comments As A service platform. Add comments to your blogs or websites</p>
                 </div>
                 <div class="portfolio-item">
-                    <h3>BitSumni</h3>
-                    <p>Bitsumni is a blockchain based fintech platform for currency exchange</p>
+                    <h3>Inzu</h3>
+                    <p>House hunting solution for low income earners</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section-padding bg-light-gray">
-        <div class="container text-center">
-            <h2 class="section-title">Contact Us</h2>
-            <form action="#" method="POST" class="form-container">
+	<section id="contact" class="section-padding bg-light-gray">
+    <div class="container text-center">
+        <h2 class="section-title">Contact Us</h2>
+        <form action="#" method="POST" class="form-container">
+            <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required placeholder="Your Name">
+            </div>
 
+            <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required placeholder="Your Email">
+            </div>
 
+            <div class="form-group">
+                <label for="project-description">Project Description:</label>
+                <textarea id="project-description" name="project-description" rows="4" placeholder="Describe your project here..." required></textarea>
+            </div>
+
+            <div class="form-group">
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
+                <textarea id="message" name="message" rows="4" required placeholder="Your Message"></textarea>
+            </div>
 
-                <input type="submit" value="Send Message" class="button">
-            </form>
-        </div>
-    </section>
+            <input type="submit" value="Send Message" class="button">
+        </form>
+    </div>
+	</section>
 
-    <footer class="footer-bg text-white py-4 text-center">
-        &copy; 2024 Algocentauri. All rights reserved.
-    </footer>
+
+	<footer class="footer-bg text-white py-4 text-center">
+		<div class="container">
+			<p>&copy; 2024 Algocentauri. All rights reserved.</p>
+			<ul class="footer-links">
+				<li><a href="#privacy-policy" class="footer-link">Privacy Policy</a></li>
+				<li><a href="#terms-of-service" class="footer-link">Terms of Service</a></li>
+				<li><a href="#contact" class="footer-link">Contact Us</a></li>
+			</ul>
+		</div>
+	</footer>
+
 
 </body>
 </html>

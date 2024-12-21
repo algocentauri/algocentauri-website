@@ -65,26 +65,44 @@ body {
     transform: scale(1.05); 
 }
 
-.text-white {
-    color: white;
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px; /* Space between cards */
+    margin-top: 20px; /* Space above the card container */
 }
 
-.py-10 {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+.service-card {
+    background-color: white; /* Card background color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
 }
 
-.text-center {
-    text-align: center;
+.service-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
 }
 
-.header-title {
-    font-size: 2.25rem; /* text-4xl */
+.service-title {
+    font-size: 1.5rem; /* Larger title font size */
+    color: var(--oxygen-blue); /* Consistent brand color */
+    margin-bottom: 10px; /* Space below title */
 }
 
-.header-subtitle {
-    font-size: 1.25rem; /* text-xl */
+.service-description {
+    font-size: 1rem; /* Standard description font size */
+    color: #666; /* Darker gray for better readability */
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .service-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust grid for smaller screens */
+    }
+}
+
 
 .button {
     background-color: var(--oxygen-blue);
@@ -147,19 +165,65 @@ body {
 }
 
 .form-container {
-    background-color: white;
-    padding: 1.5rem; /* p-6 */
-    border-radius: 0.375rem; /* rounded */
+    display: flex;
+    flex-direction: column;
 }
 
-input[type=text], input[type=email], textarea {
-    border: 1px solid #d1d5db; /* border-gray-300 */
-    padding: 0.5rem; /* p-2 */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
     width: 100%;
-    margin-bottom: 1rem; /* mb-4 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+input[type="submit"] {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
 }
 
 .footer-bg {
-    background-color: #4a5568; /* bg-gray-800 */
+    background-color: #333; /* Dark background for contrast */
+}
+
+.footer-links {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 10px 0 0; /* Margin above the links */
+}
+
+.footer-links li {
+    display: inline; /* Display links in a row */
+    margin-right: 15px; /* Space between links */
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none; /* Remove underline */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Underline on hover for emphasis */
 }
 
