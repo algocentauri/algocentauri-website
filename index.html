@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algocentauri - Next-Gen Tech Solutions</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
+
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            --primary-gradient: #667eea;
+            --secondary-gradient: #f093fb;
+            --accent-gradient: #4facfe;
+            --dark-gradient: #0c0c0c;
             --glass-bg: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.2);
             --text-primary: #ffffff;
@@ -44,16 +45,25 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, rgba(120, 199, 255, 0.3) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
+            z-index: -1;
+            /* background: radials removed */
+            background: transparent;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(2deg); }
-            66% { transform: translateY(10px) rotate(-1deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+
+            66% {
+                transform: translateY(10px) rotate(-1deg);
+            }
         }
 
         /* Header/Hero Section */
@@ -64,7 +74,8 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(30, 30, 30, 0.6) 100%);
+            position: relative;
+            background: rgba(10, 10, 10, 0.8);
         }
 
         .hero-content {
@@ -78,6 +89,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -124,7 +136,9 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
             transition: left 0.5s ease;
         }
 
@@ -157,6 +171,7 @@
                 opacity: 0;
                 transform: translateX(-50%) translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(-50%) translateY(0);
@@ -220,7 +235,7 @@
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 12px;
             padding: 3rem;
             box-shadow: var(--shadow-primary);
             font-size: 1.1rem;
@@ -239,7 +254,7 @@
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 12px;
             padding: 2.5rem;
             transition: all 0.3s ease;
             box-shadow: var(--shadow-primary);
@@ -298,7 +313,7 @@
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
             box-shadow: var(--shadow-primary);
@@ -318,6 +333,18 @@
             justify-content: center;
             font-size: 3rem;
             color: white;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-card:hover .portfolio-image img {
+            transform: scale(1.1);
         }
 
         .portfolio-content {
@@ -341,7 +368,7 @@
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 12px;
             padding: 3rem;
             box-shadow: var(--shadow-primary);
             max-width: 600px;
@@ -365,7 +392,7 @@
             padding: 1rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
-            border-radius: 10px;
+            border-radius: 8px;
             color: var(--text-primary);
             font-family: inherit;
             transition: all 0.3s ease;
@@ -451,6 +478,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="bg-animation"></div>
 
@@ -476,7 +504,10 @@
             <h2 class="section-title">About Us</h2>
             <p class="section-subtitle">Pioneering the future of technology</p>
             <div class="about-content">
-                <p>At Algocentauri, we specialize in full-stack development, integrating cutting-edge hardware solutions and innovative economic principles to create transformative applications tailored to your unique vision. We don't just build software – we craft digital experiences that push the boundaries of what's possible.</p>
+                <p>At Algocentauri, we specialize in full-stack development, integrating cutting-edge hardware solutions
+                    and innovative economic principles to create transformative applications tailored to your unique
+                    vision. We don't just build software – we craft digital experiences that push the boundaries of
+                    what's possible.</p>
             </div>
         </div>
     </section>
@@ -489,27 +520,32 @@
                 <div class="service-card">
                     <span class="service-icon">🌐</span>
                     <h3 class="service-title">Full-Stack Development</h3>
-                    <p class="service-description">End-to-end software solutions spanning front-end, back-end, mobile, and web technologies with modern frameworks and architectures.</p>
+                    <p class="service-description">End-to-end software solutions spanning front-end, back-end, mobile,
+                        and web technologies with modern frameworks and architectures.</p>
                 </div>
                 <div class="service-card">
                     <span class="service-icon">🚀</span>
                     <h3 class="service-title">Rapid Prototyping</h3>
-                    <p class="service-description">Lightning-fast prototyping to transform your ideas into tangible products using agile methodologies and cutting-edge tools.</p>
+                    <p class="service-description">Lightning-fast prototyping to transform your ideas into tangible
+                        products using agile methodologies and cutting-edge tools.</p>
                 </div>
                 <div class="service-card">
                     <span class="service-icon">🔧</span>
                     <h3 class="service-title">Custom Hardware</h3>
-                    <p class="service-description">Bespoke hardware solutions engineered to meet your exact specifications with precision and innovation.</p>
+                    <p class="service-description">Bespoke hardware solutions engineered to meet your exact
+                        specifications with precision and innovation.</p>
                 </div>
                 <div class="service-card">
                     <span class="service-icon">💻</span>
                     <h3 class="service-title">Embedded Systems</h3>
-                    <p class="service-description">Expert embedded systems design optimized for performance, efficiency, and reliability in demanding environments.</p>
+                    <p class="service-description">Expert embedded systems design optimized for performance, efficiency,
+                        and reliability in demanding environments.</p>
                 </div>
                 <div class="service-card">
                     <span class="service-icon">📡</span>
                     <h3 class="service-title">IoT Integration</h3>
-                    <p class="service-description">Seamless IoT device integration creating intelligent, connected ecosystems for smarter business solutions.</p>
+                    <p class="service-description">Seamless IoT device integration creating intelligent, connected
+                        ecosystems for smarter business solutions.</p>
                 </div>
             </div>
         </div>
@@ -521,31 +557,48 @@
             <p class="section-subtitle">Innovative projects that showcase our expertise</p>
             <div class="portfolio-grid">
                 <div class="portfolio-card">
+                    <a href="https://medialert.vercel.app" target="_blank"
+                        style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="portfolio-image">
+                            <img src="assets/wabberflow.jpg" alt="Wabber Flow">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Wabber Flow</h3>
+                            <p class="portfolio-description">Comprehensive water network management dashboard for
+                                monitoring zones, meters, and customers.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-card">
                     <div class="portfolio-image">💊</div>
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">MediAlert</h3>
-                        <p class="portfolio-description">Intelligent medication reminder system with advanced scheduling, dosage tracking, and health monitoring capabilities.</p>
+                        <p class="portfolio-description">Intelligent medication reminder system with advanced
+                            scheduling, dosage tracking, and health monitoring capabilities.</p>
                     </div>
                 </div>
                 <div class="portfolio-card">
                     <div class="portfolio-image">👔</div>
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">Mama's Laundramat</h3>
-                        <p class="portfolio-description">On-demand laundry service platform connecting customers with trusted laundry professionals for convenient, quality service.</p>
+                        <p class="portfolio-description">On-demand laundry service platform connecting customers with
+                            trusted laundry professionals for convenient, quality service.</p>
                     </div>
                 </div>
                 <div class="portfolio-card">
                     <div class="portfolio-image">💬</div>
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">Echo Box</h3>
-                        <p class="portfolio-description">Comments-as-a-Service platform providing seamless integration of interactive commenting systems for blogs and websites.</p>
+                        <p class="portfolio-description">Comments-as-a-Service platform providing seamless integration
+                            of interactive commenting systems for blogs and websites.</p>
                     </div>
                 </div>
                 <div class="portfolio-card">
                     <div class="portfolio-image">🏠</div>
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">Inzu</h3>
-                        <p class="portfolio-description">Revolutionary house hunting solution designed specifically for low-income earners, making homeownership accessible to everyone.</p>
+                        <p class="portfolio-description">Revolutionary house hunting solution designed specifically for
+                            low-income earners, making homeownership accessible to everyone.</p>
                     </div>
                 </div>
             </div>
@@ -563,15 +616,18 @@
                 </div>
                 <div class="form-group">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" class="form-input" required placeholder="your.email@example.com">
+                    <input type="email" id="email" name="email" class="form-input" required
+                        placeholder="your.email@example.com">
                 </div>
                 <div class="form-group">
                     <label for="project" class="form-label">Project Description</label>
-                    <textarea id="project" name="project-description" class="form-textarea" required placeholder="Tell us about your project vision..."></textarea>
+                    <textarea id="project" name="project-description" class="form-textarea" required
+                        placeholder="Tell us about your project vision..."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="message" class="form-label">Additional Message</label>
-                    <textarea id="message" name="message" class="form-textarea" required placeholder="Any additional details or questions..."></textarea>
+                    <textarea id="message" name="message" class="form-textarea" required
+                        placeholder="Any additional details or questions..."></textarea>
                 </div>
                 <button type="submit" class="submit-button">Send Message</button>
             </form>
@@ -628,11 +684,11 @@
 
         // Add hover effect to service cards
         document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
+            card.addEventListener('mouseenter', function () {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
             });
-            
-            card.addEventListener('mouseleave', function() {
+
+            card.addEventListener('mouseleave', function () {
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
@@ -641,7 +697,7 @@
         function typeWriter(element, text, speed = 50) {
             let i = 0;
             element.innerHTML = '';
-            
+
             function type() {
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
@@ -649,7 +705,7 @@
                     setTimeout(type, speed);
                 }
             }
-            
+
             setTimeout(type, 1000);
         }
 
@@ -661,4 +717,5 @@
         });
     </script>
 </body>
+
 </html>
