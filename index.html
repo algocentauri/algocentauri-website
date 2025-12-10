@@ -75,13 +75,28 @@
             text-align: center;
             position: relative;
             position: relative;
-            background: rgba(10, 10, 10, 0.8);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
 
         .hero-content {
             max-width: 800px;
             padding: 0 2rem;
             animation: fadeInUp 1s ease-out;
+            position: relative;
+            z-index: 2;
         }
 
         @keyframes fadeInUp {
@@ -492,6 +507,7 @@
     </nav>
 
     <header class="hero">
+        <canvas id="hero-canvas"></canvas>
         <div class="hero-content">
             <h1>AlgoCentauri</h1>
             <p class="hero-subtitle">Next-Generation Solutions from Hardware to Software</p>
@@ -570,7 +586,9 @@
                     </a>
                 </div>
                 <div class="portfolio-card">
-                    <div class="portfolio-image">💊</div>
+                    <div class="portfolio-image">
+                        <img src="assets/medialert-dashboard.png" alt="MediAlert">
+                    </div>
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">MediAlert</h3>
                         <p class="portfolio-description">Intelligent medication reminder system with advanced
@@ -578,12 +596,30 @@
                     </div>
                 </div>
                 <div class="portfolio-card">
-                    <div class="portfolio-image">👔</div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Mama's Laundramat</h3>
-                        <p class="portfolio-description">On-demand laundry service platform connecting customers with
-                            trusted laundry professionals for convenient, quality service.</p>
-                    </div>
+                    <a href="https://qleap.co.ke" target="_blank"
+                        style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="portfolio-image">
+                            <img src="assets/qleap.png" alt="Leap Innovations">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Leap Innovations</h3>
+                            <p class="portfolio-description">Transforming logistics for modern business with real-time
+                                tracking, intelligent routing, and seamless fleet management.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-card">
+                    <a href="https://pitchsync.vercel.app" target="_blank"
+                        style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="portfolio-image">
+                            <img src="assets/pitchsync.png" alt="PitchSync">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">PitchSync</h3>
+                            <p class="portfolio-description">The most trusted platform for authentic influencer
+                                marketing, connecting creators with brands to drive real results.</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="portfolio-card">
                     <div class="portfolio-image">💬</div>
@@ -715,6 +751,132 @@
             const originalText = subtitle.textContent;
             typeWriter(subtitle, originalText, 30);
         });
+
+        // Hero Canvas Particle Animation
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        // Configuration
+        const particleCount = 100; // Number of nodes
+        const connectionDistance = 150; // Max distance for edges
+        const mouseDistance = 200; // Interaction radius
+
+        // Resize handling
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight; // Full viewport height for hero
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Mouse tracking
+        const mouse = { x: null, y: null };
+        window.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            // Only track if mouse is over/near the canvas (simple check)
+            if (e.clientY <= height) {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            } else {
+                mouse.x = null;
+                mouse.y = null;
+            }
+        });
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+                this.size = Math.random() * 2 + 1;
+                this.baseColor = 'rgba(100, 150, 255, 0.5)'; // Blueish nodes
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                // Mouse interaction
+                if (mouse.x != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouseDistance) {
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const force = (mouseDistance - distance) / mouseDistance;
+                        // Repel
+                        const directionX = forceDirectionX * force * 5;
+                        const directionY = forceDirectionY * force * 5;
+
+                        this.vx -= directionX * 0.1;
+                        this.vy -= directionY * 0.1;
+
+                        // Add a little friction/return to normal speed if needed, 
+                        // but simple repelling works well for this effect
+                    }
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.baseColor;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.update();
+                p.draw();
+
+                // Draw edges
+                for (let j = i; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dx = p.x - p2.x;
+                    let dy = p.y - p2.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        // Opacity based on distance
+                        let opacity = 1 - (distance / connectionDistance);
+                        ctx.strokeStyle = `rgba(100, 150, 255, ${opacity * 0.2})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        initParticles();
+        animate();
     </script>
 </body>
 
