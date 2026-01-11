@@ -9,7 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
         :root {
-            --primary-gradient: #667eea;
+            --primary-gradient: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
             --secondary-gradient: #f093fb;
             --accent-gradient: #4facfe;
             --dark-gradient: #0c0c0c;
@@ -1058,130 +1058,96 @@
             });
         });
 
-        // Hero Canvas Particle Animation
+        // Hero Canvas Solar System Animation
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
-        let particles = [];
+        let orbits = [];
 
         // Configuration
-        const particleCount = 100; // Number of nodes
-        const connectionDistance = 150; // Max distance for edges
-        const mouseDistance = 200; // Interaction radius
+        const orbitCount = 8;
+        const colorPalette = ['#00b09b', '#96c93d', '#4facfe', '#f093fb', '#ffffff'];
 
-        // Resize handling
         function resize() {
             width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight; // Full viewport height for hero
+            height = canvas.height = window.innerHeight;
+            initOrbits();
         }
         window.addEventListener('resize', resize);
-        resize();
 
-        // Mouse tracking
-        const mouse = { x: null, y: null };
-        window.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            // Only track if mouse is over/near the canvas (simple check)
-            if (e.clientY <= height) {
-                mouse.x = e.clientX;
-                mouse.y = e.clientY;
-            } else {
-                mouse.x = null;
-                mouse.y = null;
-            }
-        });
-        window.addEventListener('mouseout', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 1.5;
-                this.vy = (Math.random() - 0.5) * 1.5;
-                this.size = Math.random() * 2 + 1;
-                this.baseColor = 'rgba(100, 150, 255, 0.9)'; // More visible nodes
+        class Orbit {
+            constructor(radius, speed, size, color) {
+                this.radius = radius;
+                this.angle = Math.random() * Math.PI * 2;
+                this.speed = speed;
+                this.size = size;
+                this.color = color;
+                this.opacity = Math.random() * 0.5 + 0.3;
             }
 
             update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                // Bounce off edges
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-
-                // Mouse interaction
-                if (mouse.x != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < mouseDistance) {
-                        const forceDirectionX = dx / distance;
-                        const forceDirectionY = dy / distance;
-                        const force = (mouseDistance - distance) / mouseDistance;
-                        // Repel
-                        const directionX = forceDirectionX * force * 5;
-                        const directionY = forceDirectionY * force * 5;
-
-                        this.vx -= directionX * 0.1;
-                        this.vy -= directionY * 0.1;
-
-                        // Add a little friction/return to normal speed if needed, 
-                        // but simple repelling works well for this effect
-                    }
-                }
+                this.angle += this.speed;
             }
 
             draw() {
+                const centerX = width / 2;
+                const centerY = height / 2;
+
+                // Draw Orbit Ring
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.baseColor;
+                ctx.arc(centerX, centerY, this.radius, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // Calculate Planet Position
+                const x = centerX + Math.cos(this.angle) * this.radius;
+                const y = centerY + Math.sin(this.angle) * this.radius;
+
+                // Draw Planet
+                ctx.beginPath();
+                ctx.arc(x, y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
                 ctx.fill();
+
+                // Glow effect
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                ctx.globalAlpha = 1;
             }
         }
 
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
+        function initOrbits() {
+            orbits = [];
+            const minDim = Math.min(width, height);
+            // Calculate spacing to fit nicely within the screen
+            const spacing = (minDim / 2) / (orbitCount + 1);
+
+            for (let i = 1; i <= orbitCount; i++) {
+                const radius = i * spacing;
+                // Outer planets move slower, alternating directions
+                const speed = (0.005 / (Math.sqrt(i))) * (i % 2 === 0 ? 1 : -1);
+                const size = Math.random() * 3 + 2;
+                const color = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+                orbits.push(new Orbit(radius, speed, size, color));
             }
         }
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
 
-            for (let i = 0; i < particles.length; i++) {
-                let p = particles[i];
-                p.update();
-                p.draw();
+            orbits.forEach(orbit => {
+                orbit.update();
+                orbit.draw();
+            });
 
-                // Draw edges
-                for (let j = i; j < particles.length; j++) {
-                    let p2 = particles[j];
-                    let dx = p.x - p2.x;
-                    let dy = p.y - p2.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < connectionDistance) {
-                        ctx.beginPath();
-                        // Opacity based on distance
-                        let opacity = 1 - (distance / connectionDistance);
-                        ctx.strokeStyle = `rgba(100, 150, 255, ${opacity * 0.6})`; // More visible edges
-                        ctx.lineWidth = 1.5;
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
-            }
             requestAnimationFrame(animate);
         }
 
-        initParticles();
+        resize(); // Initial setup
         animate();
     </script>
 </body>
