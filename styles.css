@@ -160,7 +160,8 @@ body {
 }
 
 .section-title {
-    font-size: 1.875rem; /* text-3xl */
+    /*font-size: 1.875rem; */ /* text-3xl */
+    font-size: 28px;
 }
 
 .service-list {

@@ -288,7 +288,7 @@
 
         /* Sections */
         .section {
-            padding: 8rem 2rem;
+            padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -306,7 +306,7 @@
             font-size: 1.1rem;
             color: var(--text-primary);
             opacity: 0.9;
-            margin-bottom: 4rem;
+            margin-bottom: 2.5rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -522,11 +522,96 @@
 
         /* Footer */
         .footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--bg-card);
-            border-top: 1px solid var(--glass-border);
+            padding: 5rem 2rem 2rem;
+            background: #050505;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-secondary);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand .nav-logo {
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .footer-tagline {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 250px;
+            color: var(--text-secondary);
+        }
+
+        .footer-column h4 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icon {
+            color: var(--text-secondary);
+            width: 20px;
+            height: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
         }
 
         /* Responsive Design */
@@ -562,7 +647,7 @@
             }
 
             .section {
-                padding: 4rem 1rem;
+                padding: 3rem 1rem;
             }
 
             .services-grid,
@@ -570,8 +655,20 @@
                 grid-template-columns: 1fr;
             }
 
-            .hero {
-                padding-top: 2rem;
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-brand .footer-tagline {
+                margin: 0 auto;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
             }
         }
 
@@ -797,7 +894,72 @@
     </section>
 
     <footer class="footer">
-        <p>&copy; 2024 Algocentauri. All rights reserved. Crafted with innovation and precision.</p>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo">AlgoCentauri</a>
+                <p class="footer-tagline">Building the future of digital innovation, one breakthrough at a time.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#portfolio">Our Portfolio</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="#contact">Contact Form</a></li>
+                    <li><a href="mailto:info@algocentauri.com">info@algocentauri.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <p>&copy; 2026 AlgoCentauri. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z">
+                        </path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </footer>
 
     <script>
