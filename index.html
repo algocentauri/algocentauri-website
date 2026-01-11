@@ -139,7 +139,7 @@
             background: var(--accent-gradient);
             color: white;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
@@ -294,24 +294,23 @@
         }
 
         .section-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 800;
             text-align: center;
-            margin-bottom: 1rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-secondary);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            opacity: 0.9;
             margin-bottom: 4rem;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 400;
         }
 
         /* About Section */
@@ -323,7 +322,7 @@
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 3rem;
             box-shadow: var(--shadow-primary);
             font-size: 1.1rem;
@@ -333,60 +332,65 @@
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
             margin-top: 3rem;
         }
 
         .service-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-primary);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
+            background: #0f0f0f;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 3rem 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
+            background: #151515;
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .service-icon-box {
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon-box {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
         }
 
         .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
+            width: 28px;
+            height: 28px;
+            color: #ffffff;
+            stroke-width: 1.5;
         }
 
         .service-title {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--text-primary);
+            color: #ffffff;
+            letter-spacing: -0.01em;
         }
 
         .service-description {
             color: var(--text-secondary);
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         /* Portfolio Grid */
@@ -401,7 +405,7 @@
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
             transition: all 0.3s ease;
             box-shadow: var(--shadow-primary);
@@ -456,7 +460,7 @@
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 3rem;
             box-shadow: var(--shadow-primary);
             max-width: 600px;
@@ -504,7 +508,7 @@
             background: var(--primary-gradient);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 6px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
@@ -628,25 +632,62 @@
     <section id="services" class="section">
         <div class="fade-in">
             <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Comprehensive solutions for the modern digital landscape</p>
+            <p class="section-subtitle">Comprehensive solutions for the modern digital landscape. We focus on building
+                modern systems that help your business grow.</p>
             <div class="services-grid">
                 <div class="service-card">
-                    <span class="service-icon">🌐</span>
+                    <div class="service-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
                     <h3 class="service-title">Software Solutions</h3>
                     <p class="service-description">From rapid prototyping to full-stack development, we build end-to-end
-                        web and mobile applications using modern architectures.</p>
+                        web and mobile applications.</p>
                 </div>
                 <div class="service-card">
-                    <span class="service-icon">🔧</span>
+                    <div class="service-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                            </path>
+                        </svg>
+                    </div>
                     <h3 class="service-title">Hardware Engineering</h3>
                     <p class="service-description">Bespoke hardware solutions and expert embedded systems design
-                        optimized for performance, efficiency, and reliability.</p>
+                        optimized for performance and reliability.</p>
                 </div>
                 <div class="service-card">
-                    <span class="service-icon">📡</span>
+                    <div class="service-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
+                            <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
+                            <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
+                            <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
+                        </svg>
+                    </div>
                     <h3 class="service-title">IoT & Connectivity</h3>
                     <p class="service-description">Seamless integration of IoT devices and smart systems to create
-                        intelligent, connected ecosystems for modern businesses.</p>
+                        intelligent, connected ecosystems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Digital Commerce</h3>
+                    <p class="service-description">Secure online shops and payment integrations that empower your
+                        business to scale globally.</p>
                 </div>
             </div>
         </div>
