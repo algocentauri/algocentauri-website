@@ -237,6 +237,55 @@
             color: white;
         }
 
+        /* Mobile Menu Toggle */
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger::before {
+            transform: translateY(-8px);
+        }
+
+        .hamburger::after {
+            transform: translateY(8px);
+        }
+
+        /* Hamburger animation when open */
+        .nav-open .hamburger {
+            background-color: transparent;
+        }
+
+        .nav-open .hamburger::before {
+            transform: rotate(45deg);
+        }
+
+        .nav-open .hamburger::after {
+            transform: rotate(-45deg);
+        }
+
         /* Sections */
         .section {
             padding: 8rem 2rem;
@@ -483,17 +532,29 @@
             }
 
             .nav-container {
-                flex-direction: column;
-                gap: 1rem;
+                flex-wrap: wrap;
+                /* Allow wrapping for the logo/toggle vs menu */
                 padding: 1rem;
             }
 
+            .nav-toggle {
+                display: block;
+                /* Show toggle on mobile */
+            }
+
             .nav-list {
-                display: flex;
-                /* Ensure it's visible if we want it shown, or hamburger. User implies 'friendly' so creating a wrapped list is friendly enough for simple sites */
-                flex-wrap: wrap;
-                justify-content: center;
+                width: 100%;
+                display: none;
+                /* Hide toggle menu by default */
+                flex-direction: column;
+                align-items: center;
                 gap: 1rem;
+                padding-top: 1rem;
+            }
+
+            .nav-list.active {
+                display: flex;
+                /* Show when active */
             }
 
             .section {
@@ -530,6 +591,9 @@
     <nav class="nav">
         <div class="nav-container">
             <a href="#" class="nav-logo">AlgoCentauri</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
             <ul class="nav-list">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
@@ -771,6 +835,24 @@
             const subtitle = document.querySelector('.hero-subtitle');
             const originalText = subtitle.textContent;
             typeWriter(subtitle, originalText, 30);
+        });
+
+        // Mobile Menu Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navList = document.querySelector('.nav-list');
+        const nav = document.querySelector('.nav');
+
+        navToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            nav.classList.toggle('nav-open');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+                nav.classList.remove('nav-open');
+            });
         });
 
         // Hero Canvas Particle Animation
